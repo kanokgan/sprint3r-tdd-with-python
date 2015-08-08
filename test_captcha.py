@@ -1,6 +1,8 @@
 import unittest
-from captcha import Captcha
-from tddoperator import Operator
+from mycaptcha import Captcha
+from myoperator import Operator
+from myoperand import StringOperand
+from myoperand import IntOperand
 
 class TestFirstPatternLeftOperand(unittest.TestCase):
 	
@@ -88,6 +90,68 @@ class TestOperatorClass(unittest.TestCase):
 	def test_3_should_be_minus(self):
 		operator = Operator(3)
 		self.assertEqual('-', operator.to_string())
+
+
+class TestStringOperandClass(unittest.TestCase):
+
+	def test_input_1_should_be_one(self):
+		stringOperand = StringOperand(1)
+		self.assertEqual('one', stringOperand.to_string())
+
+	def test_input_2_should_be_two(self):
+		stringOperand = StringOperand(2)
+		self.assertEqual('two', stringOperand.to_string())
+
+class TestIntOperandClass(unittest.TestCase):
+
+	def test_input_1_should_be_1(self):
+		intOperand = IntOperand(1)
+		self.assertEqual('1', intOperand.to_string())
+
+	def test_input_2_should_be_2(self):
+		intOperand = IntOperand(2)
+		self.assertEqual('2', intOperand.to_string())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
