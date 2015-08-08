@@ -1,5 +1,9 @@
 from flask import Flask 
-from fizzbuzz import FizzBuzz
+from mycaptcha import Captcha
+from myoperator import Operator
+from myoperand import StringOperand
+from myoperand import IntOperand
+from myrandomizer import Randomizer
 
 app = Flask(__name__)
 
@@ -7,10 +11,9 @@ app = Flask(__name__)
 def hello():
 	return "Hello World"
 
-@app.route('/fizzbuzz/<int:number>')
-def fizzbuzz(number):
-	fizzbuzz = FizzBuzz()
-	return fizzbuzz.count(number)
+@app.route('/captcha')
+def captcha():
+	return 'hello world'
 
 
 if __name__ == '__main__':

@@ -1,4 +1,5 @@
 import unittest
+from app import app
 from mycaptcha import Captcha
 from myoperator import Operator
 from myoperand import StringOperand
@@ -127,7 +128,11 @@ class TestRandomizerClass(unittest.TestCase):
 
 
 
-
+class TestCaptchaAPI(unittest.TestCase):
+	def test_it_should_return_200(self):
+		self.app = app.test_client()
+		response = self.app.get('/captcha')
+		self.assertEqual(response.status_code, 200)
 
 
 
