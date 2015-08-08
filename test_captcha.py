@@ -5,6 +5,7 @@ from myoperator import Operator
 from myoperand import StringOperand
 from myoperand import IntOperand
 from myrandomizer import Randomizer
+from CaptchaController import CaptchaController
 
 class TestFirstPatternLeftOperand(unittest.TestCase):
 	
@@ -129,14 +130,45 @@ class TestRandomizerClass(unittest.TestCase):
 
 
 class TestCaptchaAPI(unittest.TestCase):
+	
 	def test_it_should_return_200(self):
 		self.app = app.test_client()
 		response = self.app.get('/captcha')
 		self.assertEqual(response.status_code, 200)
 
 
+class TestCapchaController(unittest.TestCase):
+
+	def test_should_be_return_valid_json(self):
+		captcha_controller = CaptchaController()
+		captcha_controller.captcha = Captcha(1,1,1,1)
+		self.assertEqual('{"left": "1", "operator": "1", "right": "1"}', captcha_controller.to_json())
+
+# class TestCaptchaControllerRandomizer(unittest.TestCase):
+# 	def test_get(self):
+
+# 		stubRandomizer = Randomizer()
+
+# 		def stub_pattern():
+# 			return 1
+
+# 		def stub_operand():
+# 			return 1
+
+# 		def stub_operator():
+# 			return 1
+
+# 		stubRandomizer.pattern = stub_pattern
+# 		stubRandomizer.operand = stub_operator
+# 		stubRandomizer.operator = stub_operand
+		
+
+# 		captchaController = CaptchaController()
 
 
+# 		captchaController.Randomizer = stubRandomizer
+
+# 		assertEqual('{"left": "1", "operator": "1", "right": "1"}', captchaController.get())
 
 
 
