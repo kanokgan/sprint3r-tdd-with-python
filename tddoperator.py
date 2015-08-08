@@ -1,7 +1,9 @@
 class Operator():
+
+	operatorStr = ['+', '*', '-']
+
 	def __init__(self, mode):
 		self.mode = mode
 
 	def to_string(self):
-		if(self.mode == 1):
-			return '+'
+		return self.operatorStr[self.mode - 1]
