@@ -3,6 +3,7 @@ from mycaptcha import Captcha
 from myoperator import Operator
 from myoperand import StringOperand
 from myoperand import IntOperand
+from myrandomizer import Randomizer
 
 class TestFirstPatternLeftOperand(unittest.TestCase):
 	
@@ -111,6 +112,18 @@ class TestIntOperandClass(unittest.TestCase):
 	def test_input_2_should_be_2(self):
 		intOperand = IntOperand(2)
 		self.assertEqual('2', intOperand.to_string())
+
+
+class TestRandomizerClass(unittest.TestCase):
+
+	def test_pattern_should_return_between_1_and_2(self):
+		self.assertTrue(1 <= Randomizer().random_pattern() <= 2)
+
+	def test_operator_shoud_return_between_1_and_3(self):
+		self.assertTrue(1 <= Randomizer().random_operator() <= 3)
+
+	def test_operand_shoud_return_between_0_and_9(self):
+		self.assertTrue(0 <= Randomizer().random_operand() <= 9)
 
 
 
