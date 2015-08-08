@@ -53,16 +53,41 @@ class TestSecondPatternRightOperand(unittest.TestCase):
 		captcha = Captcha(self.DUMMY_PATTERN, self.DUMMY_LEFT, self.DUMMY_OPERATOR, 1)
 		self.assertEqual('one', captcha.right_operand())
 
+class TestOperator(unittest.TestCase):
+	
+	DUMMY_PATTERN = 1
+	DUMMY_OPERATOR = 1
+	DUMMY_LEFT = 1
+	DUMMY_RIGHT = 1
+
+	def test_1_should_be_plus(self):
+		captcha = Captcha(self.DUMMY_PATTERN, self.DUMMY_LEFT, 1, self.DUMMY_RIGHT)
+		self.assertEqual('+', captcha.operator())
+
+	def test_2_should_be_multiply(self):
+		captcha = Captcha(self.DUMMY_PATTERN, self.DUMMY_LEFT, 2, self.DUMMY_RIGHT)
+		self.assertEqual('*', captcha.operator())
+
+	def test_3_should_be_minus(self):
+		captcha = Captcha(self.DUMMY_PATTERN, self.DUMMY_LEFT, 3, self.DUMMY_RIGHT)
+		self.assertEqual('-', captcha.operator())
+
+
+
+
 
 
 class Captcha():
 
 	numberStr = ['zero', 'one', 'two', 'tree', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+	operatorStr = ['+', '*', '-']
 
 	def __init__(self, pattern, left, operand, right):
 		self.pattern = pattern
 		self.left = left
 		self.right = right
+		self.operand = operand
+
 
 	def left_operand(self):
 
@@ -71,14 +96,18 @@ class Captcha():
 
 		return str(self.left)
 
+
 	def right_operand(self):
 
 		if(self.pattern == 2):
 			return self.numberStr[self.right]
 
 		return str(self.right)
+		
 
+	def operator(self):
 
+		return self.operatorStr[self.operand - 1]
 
 
 
