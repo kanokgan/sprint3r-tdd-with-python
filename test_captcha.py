@@ -1,4 +1,5 @@
 import unittest
+from tddoperator import Operator
 
 class TestFirstPatternLeftOperand(unittest.TestCase):
 	
@@ -73,7 +74,11 @@ class TestOperator(unittest.TestCase):
 		self.assertEqual('-', captcha.operator())
 
 
+class TestOperatorClass(unittest.TestCase):
 
+	def test_1_should_be_plus(self):
+		operator = Operator(1)
+		self.assertEqual('+', operator.to_string())
 
 
 
@@ -108,29 +113,4 @@ class Captcha():
 	def operator(self):
 
 		return self.operatorStr[self.operand - 1]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
